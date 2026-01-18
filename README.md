@@ -53,7 +53,6 @@ Many organizations rely on scanned user-filled forms for onboarding and operatio
 ### 1. Input Layer
 Simple web interface for uploading scanned images or PDFs.
 
-**Design Choice:** Minimal UI to focus on extraction logic
 
 ### 2. Preprocessing
 **Responsibilities:**
@@ -69,7 +68,6 @@ Converts scanned documents into raw text.
 
 **Technology:** Pretrained OCR engines (e.g., Tesseract)
 
-**Role:** Black-box text extraction
 
 ### 4. Field Extraction
 **Target Fields:**
@@ -81,7 +79,6 @@ Converts scanned documents into raw text.
 
 **Approach:** LLM-based semantic extraction
 
-**Design Reason:** Avoid complexity at the initial stage
 
 ### 5. Validation and Normalization
 **Functions:**
@@ -90,7 +87,6 @@ Converts scanned documents into raw text.
 - Address cleanup
 - Confidence score calculation
 
-**Benefit:** Ensures usable and reliable output
 
 ### 6. Output
 **Format:** JSON

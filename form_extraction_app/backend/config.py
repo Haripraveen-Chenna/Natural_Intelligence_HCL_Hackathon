@@ -9,9 +9,19 @@ if HF_API_KEY is None:
         "HF_API_KEY is not set. Please set it as an environment variable."
     )
 
-# default model
+# Example default model
 HF_MODEL = "tiiuae/falcon-7b-instruct"
 
 # Inference settings
 HF_MAX_NEW_TOKENS = 512
 HF_TEMPERATURE = 0.0  # deterministic output for JSON
+
+# OCR Configuration
+
+OCR_LANGUAGE = "eng"  # default OCR language
+
+# Application Configuration
+
+
+APP_NAME = "LLM-Based Form Information Extraction"
+APP_VERSION = "1.0.0"

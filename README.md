@@ -140,3 +140,19 @@ The system uses pretrained OCR engines and optional pretrained LLMs. The focus i
 - User feedback loop
 - Enterprise system integration
 
+
+# Hari Praveen – Backend Orchestrator	API & Pipeline	
+- Implement app.py (FastAPI)
+- Integrate OCR & LLM modules
+- Handle file uploads
+- Return JSON responses	Fully working API that connects all components
+# Aravind siddhartha – LLM & Prompt Engineer	Intelligent Extraction
+- Write prompt.py with instructions for LLM
+- Implement llm_extractor.py using Hugging Face
+- Ensure strict JSON output
+- Optional: tune temperature / few-shot examples	Clean LLM-based extraction module that produces structured JSON
+# Dhairyesh pande – OCR & Preprocessing	Text Extraction
+- Implement ocr.py
+- Preprocess images (deskew, denoise, resize)
+- Handle multiple image/PDF formats
+- Optional: confidence scoring / field highlighting	High-quality text extraction from forms for the LLM

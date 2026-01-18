@@ -1,123 +1,146 @@
-# project:
-  name: "Information Extraction from Scanned User-Filled Forms"
-  domain:
-    - document_processing
-    - ocr
-    - information_extraction
-    - automation
+# Natural_Intelligence_HCL_Hackathon
+# Information Extraction from Scanned User-Filled Forms
 
-# problem_statement:
-  description: >
-    Many organizations rely on scanned user-filled forms for onboarding and
-    operational workflows. These forms often contain handwritten or printed text,
-    varying layouts, and low-quality scans. Manual data entry from such forms is
-    slow, error-prone, and costly.
-  objective: >
-    Build an automated system that extracts structured information from scanned
-    forms and outputs it in a machine-readable JSON format.
+## Project Overview
 
-solution_overview:
-  approach: "End-to-end pipeline-based design"
-  capabilities:
-    - accept_scanned_images_and_pdfs
-    - extract_text_using_ocr
-    - identify_key_fields
-    - validate_and_normalize_data
-    - output_structured_json
+**Name:** Information Extraction from Scanned User-Filled Forms
 
-architecture:
-  flow:
-    - user_upload
-    - document_preprocessing
-    - ocr_text_extraction
-    - field_extraction
-    - validation_and_normalization
-    - structured_json_output
-  design_style: "Modular and extensible"
+**Domain:**
+- Document Processing
+- OCR
+- Information Extraction
+- Automation
 
-components:
-  input_layer:
-    description: "Simple web interface for uploading scanned images or PDFs"
-    design_choice: "Minimal UI to focus on extraction logic"
+---
 
-  preprocessing:
-    responsibilities:
-      - noise_reduction
-      - deskewing
-      - orientation_correction
-      - resolution_normalization
-    purpose: "Improve OCR accuracy"
+## Problem Statement
 
-  ocr_engine:
-    description: "Converts scanned documents into raw text"
-    technology: "Pretrained OCR engines (e.g., Tesseract)"
-    role: "Black-box text extraction"
+Many organizations rely on scanned user-filled forms for onboarding and operational workflows. These forms often contain handwritten or printed text, varying layouts, and low-quality scans. Manual data entry from such forms is slow, error-prone, and costly.
 
-  field_extraction:
-    target_fields:
-      - name
-      - date_of_birth
-      - phone_number
-      - address
-      - form_type
-    approach: "LLM-based semantic extraction"
-    design_reason: "Avoid complexity at the initial stage"
+**Objective:** Build an automated system that extracts structured information from scanned forms and outputs it in a machine-readable JSON format.
 
-  validation_and_normalization:
-    functions:
-      - date_format_standardization
-      - phone_number_validation
-      - address_cleanup
-      - confidence_score_calculation
-    benefit: "Ensures usable and reliable output"
+---
 
-  output:
-    format: "JSON"
-    example:
-      name: "John Doe"
-      dob: "1992-07-14"
-      phone: "+1 234 567 890"
-      form_type: "banking_application"
-      extraction_confidence: 0.91
+## Solution Overview
 
-design_principles:
-  - simplicity_first: "Build a working solution before adding intelligence"
-  - modular_architecture: "Each component is independent and replaceable"
-  - pretrained_models: "Leverage existing OCR and LLMs"
-  - scalable_design: "Supports future enhancements"
+**Approach:** End-to-end pipeline-based design
 
-training_strategy:
-  reasoning: >
-    The system uses pretrained OCR engines and optional pretrained LLMs.
-    The focus is on pipeline orchestration.
-  techniques_used:
-    - zero_shot_extraction
-    - rule_based_parsing
-    - optional_few_shot_prompting
+**Capabilities:**
+- Accept scanned images and PDFs
+- Extract text using OCR
+- Identify key fields
+- Validate and normalize data
+- Output structured JSON
 
-future_enhancements:
-  extraction:
-    - layout_aware_field_detection
-    - handwriting_optimized_ocr
-    - llm_based_semantic_understanding
-  validation:
-    - domain_specific_rules
-    - adaptive_confidence_scoring
-  system:
-    - multi_form_type_support
-    - user_feedback_loop
-    - enterprise_system_integration
+---
 
-summary:
-  description: >
-    This project demonstrates a practical and scalable approach to automated
-    form processing using OCR and intelligent extraction techniques.
-  highlights:
-    - end_to_end_pipeline
-    - structured_and_validated_output
-    - no_training_required
-    - modular_and_extensible_design
-  suitability:
-    - enterprise_document_automation
-    - onboarding_workflows
-    - data_digitization
+## Architecture
+
+**Design Style:** Modular and extensible
+
+**Processing Flow:**
+1. User Upload
+2. Document Preprocessing
+3. OCR Text Extraction
+4. Field Extraction
+5. Validation and Normalization
+6. Structured JSON Output
+
+---
+
+## Components
+
+### 1. Input Layer
+Simple web interface for uploading scanned images or PDFs.
+
+**Design Choice:** Minimal UI to focus on extraction logic
+
+### 2. Preprocessing
+**Responsibilities:**
+- Noise reduction
+- Deskewing
+- Orientation correction
+- Resolution normalization
+
+**Purpose:** Improve OCR accuracy
+
+### 3. OCR Engine
+Converts scanned documents into raw text.
+
+**Technology:** Pretrained OCR engines (e.g., Tesseract)
+
+**Role:** Black-box text extraction
+
+### 4. Field Extraction
+**Target Fields:**
+- Name
+- Date of Birth
+- Phone Number
+- Address
+- Form Type
+
+**Approach:** LLM-based semantic extraction
+
+**Design Reason:** Avoid complexity at the initial stage
+
+### 5. Validation and Normalization
+**Functions:**
+- Date format standardization
+- Phone number validation
+- Address cleanup
+- Confidence score calculation
+
+**Benefit:** Ensures usable and reliable output
+
+### 6. Output
+**Format:** JSON
+
+**Example Output:**
+```json
+{
+  "name": "John Doe",
+  "dob": "1992-07-14",
+  "phone": "+1 234 567 890",
+  "form_type": "banking_application",
+  "extraction_confidence": 0.91
+}
+```
+
+---
+
+## Design Principles
+
+- **Simplicity First:** Build a working solution before adding intelligence
+- **Modular Architecture:** Each component is independent and replaceable
+- **Pretrained Models:** Leverage existing OCR and LLMs
+- **Scalable Design:** Supports future enhancements
+
+---
+
+## Training Strategy
+
+The system uses pretrained OCR engines and optional pretrained LLMs. The focus is on pipeline orchestration.
+
+**Techniques Used:**
+- Zero-shot extraction
+- Rule-based parsing
+- Optional few-shot prompting
+
+---
+
+## Future Enhancements
+
+### Extraction
+- Layout-aware field detection
+- Handwriting-optimized OCR
+- LLM-based semantic understanding
+
+### Validation
+- Domain-specific rules
+- Adaptive confidence scoring
+
+### System
+- Multi-form type support
+- User feedback loop
+- Enterprise system integration
+

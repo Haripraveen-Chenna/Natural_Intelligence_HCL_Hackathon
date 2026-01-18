@@ -1,5 +1,5 @@
-fastapi
-uvicorn
+streamlit
 pytesseract
 pillow
-requests
+pdf2image
+cerebras-cloud-sdk

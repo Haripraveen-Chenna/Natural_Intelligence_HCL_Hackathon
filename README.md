@@ -1,117 +1,124 @@
-📄 Universal Document Text Extractor
+# 📄 Universal Document Text Extractor
 
-A Streamlit-based application that performs OCR + LLM-powered structured data extraction from any type of document (PDFs or images), such as:
+A Streamlit-based application that performs OCR and LLM-powered structured data extraction from any type of document (PDFs or images).
 
-Banking & KYC forms
+Supported document types include:
+•⁠  ⁠Banking / KYC / Financial forms
+•⁠  ⁠Government & Identity documents
+•⁠  ⁠Education & Employment forms
+•⁠  ⁠Insurance & Utility documents
+•⁠  ⁠Unknown or mixed-format documents
 
-Government IDs
+---
 
-Education & employment forms
+## ✨ Features
 
-Insurance & utility documents
+•⁠  ⁠Upload PDF or image documents  
+•⁠  ⁠OCR using Tesseract  
+•⁠  ⁠Structured data extraction using Cerebras LLM (LLaMA 3.1)  
+•⁠  ⁠Automatic document type inference  
+•⁠  ⁠Strict JSON output (no hallucinations)  
+•⁠  ⁠Downloadable JSON extraction report  
+•⁠  ⁠Clean Streamlit UI  
+•⁠  ⁠Deterministic output (temperature = 0.0)  
 
-Unknown or mixed-format forms
+---
 
-The system converts unstructured OCR text into strict, validated JSON output with high reliability.
+## 📁 Project Structure
 
-✨ Key Features
+document-text-extractor/  
+├── app.py  
+├── extractor.py  
+├── requirements.txt  
+├── README.md  
+├── .gitignore  
+├── temp/  
+└── output/  
+  └── extracted_report.json  
 
-📤 Upload PDF / Image documents
+---
 
-🔍 OCR using Tesseract
+## ⚙️ System Requirements
 
-🧠 Structured extraction using Cerebras LLM (LLaMA 3.1)
+### Operating System
+•⁠  ⁠Windows / Linux / macOS
 
-📊 Auto-detected document type
+### System Dependencies
 
-🧾 Strict JSON output (no hallucinations)
+#### Windows
+Install Tesseract OCR (UB Mannheim build):  
+https://github.com/UB-Mannheim/tesseract/wiki  
 
-⬇️ Downloadable JSON extraction report
+During installation:
+•⁠  ⁠Check “Add Tesseract to PATH”
+•⁠  ⁠Default install path:  
+  C:\Program Files\Tesseract-OCR\
 
-🖥️ Clean Streamlit UI
+#### Linux
+Run:  
+sudo apt update  
+sudo apt install -y tesseract-ocr poppler-utils  
 
-🧪 Hard JSON parsing for reliability
+#### macOS
+Run:  
+brew install tesseract poppler  
 
-🏗️ Project Structure
-document-text-extractor/
-│
-├── app.py                     # Streamlit UI
-├── extractor.py               # OCR + LLM extraction logic
-├── requirements.txt           # Python dependencies
-├── README.md                  # Project documentation
-├── .gitignore
-│
-├── temp/                      # Temporarily uploaded files
-└── output/
-    └── extracted_report.json  # Final downloadable output
+---
 
-⚙️ System Requirements
-Operating System
+## 🐍 Python Setup
 
-Windows / Linux / macOS
+### Create Virtual Environment (Recommended)
 
-System Dependencies (Mandatory)
-Windows
+Run:  
+python -m venv venv  
 
-Install Tesseract OCR (UB Mannheim build)
-👉 https://github.com/UB-Mannheim/tesseract/wiki
+Activate:  
+Windows → venv\Scripts\activate  
+Linux/macOS → source venv/bin/activate  
 
-Make sure:
+---
 
-✔ “Add Tesseract to PATH” is checked
+### Install Dependencies
 
-Installed at:
+Run:  
+pip install -r requirements.txt  
 
-C:\Program Files\Tesseract-OCR\
+---
 
-Linux
-sudo apt update
-sudo apt install -y tesseract-ocr poppler-utils
+## 🔑 API Key
 
-macOS
-brew install tesseract poppler
+This project uses the Cerebras Cloud SDK.
 
-🐍 Python Setup
-1️⃣ Create Virtual Environment (Recommended)
-python -m venv venv
-venv\Scripts\activate        # Windows
-source venv/bin/activate    # Linux / macOS
+You will need a valid Cerebras API key.  
+The API key is entered securely through the Streamlit UI at runtime.  
+No API keys are hardcoded in the source code.
 
-2️⃣ Install Python Dependencies
-pip install -r requirements.txt
+---
 
-🔑 API Key Requirement
+## ▶️ Run the Application
 
-This project uses Cerebras Cloud SDK.
+Run:  
+streamlit run app.py  
 
-You will need a Cerebras API Key, which is entered securely in the UI at runtime.
+Then open your browser at:  
+http://localhost:8501  
 
-No API keys are hardcoded in the application.
+---
 
-▶️ Running the Application
+## 🧑‍💻 Usage Instructions
 
-From the project root:
+1.⁠ ⁠Enter your Cerebras API key  
+2.⁠ ⁠Upload a document (PDF / JPG / PNG)  
+3.⁠ ⁠Click *Extract Information*  
+4.⁠ ⁠View the structured JSON output  
+5.⁠ ⁠Download the JSON extraction report  
 
-streamlit run app.py
+---
 
+## 📤 Output Format (Example)
 
-Then open your browser at:
+Example JSON output:
 
-http://localhost:8501
-
-🧑‍💻 How to Use
-
-Enter your Cerebras API Key
-
-Upload a document (PDF / JPG / PNG)
-
-Click “Extract Information”
-
-View structured JSON output
-
-Download the final extraction report as a .json file
-
-📤 Output Format (Sample)
 {
   "document_type": "banking",
   "person_details": {
@@ -138,51 +145,24 @@ Download the final extraction report as a .json file
   "extraction_confidence": 0.89
 }
 
-🛡️ Reliability Guarantees
+---
 
-Hard JSON parsing (json.loads)
+## 🛡️ Reliability
 
-Temperature set to 0.0 (deterministic output)
+•⁠  ⁠Hard JSON parsing using json.loads  
+•⁠  ⁠Deterministic LLM output  
+•⁠  ⁠No hallucinated values  
+•⁠  ⁠Unrecognized fields stored safely in additional_fields  
+•⁠  ⁠Confidence score included for every extraction  
 
-No hallucinated fields
+---
 
-Unrecognized fields safely placed in additional_fields
+## 🚀 Use Cases
 
-Extraction confidence score included
+•⁠  ⁠Document digitization  
+•⁠  ⁠Banking and KYC automation  
+•⁠  ⁠Form processing systems  
+•⁠  ⁠Enterprise document intelligence  
+•⁠  ⁠Hackathons and proof-of-concepts  
 
-🚀 Use Cases
-
-Banking automation
-
-KYC document processing
-
-Enterprise form digitization
-
-Hackathons & POCs
-
-Resume / application form parsing
-
-AI-powered document intelligence systems
-
-🔮 Future Enhancements
-
-Batch document upload
-
-CSV / PDF report export
-
-OCR quality tuning controls
-
-Multi-language OCR support
-
-Dockerized deployment
-
-Cloud deployment (AWS / GCP)
-
-👤 Author
-
-Developed as part of a hackathon-grade document intelligence solution
-by Srikar
-
-⭐ Final Note
-
-This project prioritizes functionality, stability, and correctness over unnecessary abstractions — making it ideal for real-world usage, demos, and evaluations.
+---
